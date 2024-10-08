@@ -455,6 +455,41 @@ export function ConsolePage() {
     //   }
     // );
 
+    client.addTool(
+      {
+        name: 'what_update',
+        description: 'Fetches an answer what update on api work.',
+        parameters: {
+          type: 'object',
+          properties: {
+            question: {
+              type: 'string',
+              description: 'question about api update',
+            }
+          }
+        }
+      },
+      async (question:string) => {
+        // The URL with the fixed question parameter
+        const url = 'https://aerochat-staging.dummywebdemo.xyz/chat/test_api?question=who';
+    
+        // Make the POST request to your endpoint without passing the question in the body
+        const result = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        // Parse the JSON response
+        const answer = await result.json();
+        console.log(answer);
+        // Extract the answer from the response
+        return answer;
+      }
+    );
+
+
     // handle realtime events from client + server for event logging
     client.on('realtime.event', (realtimeEvent: RealtimeEvent) => {
       setRealtimeEvents((realtimeEvents) => {
@@ -691,8 +726,8 @@ export function ConsolePage() {
             />
           </div>
         </div>
-        <div className="content-right">
-          {/* <div className="content-block map">
+        {/* <div className="content-right">
+          <div className="content-block map">
             <div className="content-block-title">get_weather()</div>
             <div className="content-block-title bottom">
               {marker?.location || 'not yet retrieved'}
@@ -711,14 +746,14 @@ export function ConsolePage() {
             </div>
             <div className="content-block-body full">
             </div>
-          </div> */}
-          {/* <div className="content-block kv">
+          </div>
+          <div className="content-block kv">
             <div className="content-block-title">set_memory()</div>
             <div className="content-block-body content-kv">
               {JSON.stringify(memoryKv, null, 2)}
             </div>
-          </div> */}
-        </div>
+          </div>
+        </div> */}
       </div>
     </div>
   );
