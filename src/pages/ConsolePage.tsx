@@ -457,21 +457,21 @@ export function ConsolePage() {
 
     client.addTool(
       {
-        name: 'what_update',
-        description: 'Fetches an answer what update on api work.',
+        name: 'fetch_answer',
+        description: 'fetch answer for all questions .',
         parameters: {
           type: 'object',
           properties: {
             question: {
               type: 'string',
-              description: 'question about api update',
+              description: 'question',
             }
           }
         }
       },
-      async (question:string) => {
+      async ({ question }: { [key: string]: any }) => {
         // The URL with the fixed question parameter
-        const url = 'https://aerochat-staging.dummywebdemo.xyz/chat/test_api?question=who';
+        const url = `https://aerochat-staging.dummywebdemo.xyz/chat/test_api?question=${question}`;
     
         // Make the POST request to your endpoint without passing the question in the body
         const result = await fetch(url, {
