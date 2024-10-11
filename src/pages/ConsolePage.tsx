@@ -22,7 +22,7 @@ import { WavRenderer } from '../utils/wav_renderer';
 import { X, Edit, Zap, ArrowUp, ArrowDown } from 'react-feather';
 import { Button } from '../components/button/Button';
 import { Toggle } from '../components/toggle/Toggle';
-import { Map } from '../components/Map';
+// import { Map } from '../components/Map';
 
 import './ConsolePage.scss';
 import { isJsxOpeningLikeElement } from 'typescript';
@@ -382,35 +382,35 @@ export function ConsolePage() {
     client.updateSession({ input_audio_transcription: { model: 'whisper-1' } });
 
     // Add tools
-    client.addTool(
-      {
-        name: 'set_memory',
-        description: 'Saves important data about the user into memory.',
-        parameters: {
-          type: 'object',
-          properties: {
-            key: {
-              type: 'string',
-              description:
-                'The key of the memory value. Always use lowercase and underscores, no other characters.',
-            },
-            value: {
-              type: 'string',
-              description: 'Value can be anything represented as a string',
-            },
-          },
-          required: ['key', 'value'],
-        },
-      },
-      async ({ key, value }: { [key: string]: any }) => {
-        setMemoryKv((memoryKv) => {
-          const newKv = { ...memoryKv };
-          newKv[key] = value;
-          return newKv;
-        });
-        return { ok: true };
-      }
-    );
+    // client.addTool(
+    //   {
+    //     name: 'set_memory',
+    //     description: 'Saves important data about the user into memory.',
+    //     parameters: {
+    //       type: 'object',
+    //       properties: {
+    //         key: {
+    //           type: 'string',
+    //           description:
+    //             'The key of the memory value. Always use lowercase and underscores, no other characters.',
+    //         },
+    //         value: {
+    //           type: 'string',
+    //           description: 'Value can be anything represented as a string',
+    //         },
+    //       },
+    //       required: ['key', 'value'],
+    //     },
+    //   },
+    //   async ({ key, value }: { [key: string]: any }) => {
+    //     setMemoryKv((memoryKv) => {
+    //       const newKv = { ...memoryKv };
+    //       newKv[key] = value;
+    //       return newKv;
+    //     });
+    //     return { ok: true };
+    //   }
+    // );
     // client.addTool(
     //   {
     //     name: 'get_data',
@@ -458,7 +458,7 @@ export function ConsolePage() {
     client.addTool(
       {
         name: 'fetch_answer',
-        description: 'fetch answer for all questions .',
+        description: 'fetch answer for all questions from this Tool.',
         parameters: {
           type: 'object',
           properties: {
