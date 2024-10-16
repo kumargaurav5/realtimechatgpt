@@ -542,8 +542,8 @@ export function ConsolePage() {
     <div data-component="ConsolePage">
       <div className="content-top">
         <div className="content-title">
-          <img src="/openai-logomark.svg" />
-          <span>realtime console</span>
+          <img src="https://app.aerochat.ai/user/images/AeroChat-Logo-SVG.svg" />
+          <span>AeroChat Voice POC</span>
         </div>
         <div className="content-api-key">
           {!LOCAL_RELAY_SERVER_URL && (
