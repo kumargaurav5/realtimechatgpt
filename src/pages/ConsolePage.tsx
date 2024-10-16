@@ -543,7 +543,7 @@ export function ConsolePage() {
       <div className="content-top">
         <div className="content-title">
           <img src="https://app.aerochat.ai/user/images/AeroChat-Logo-SVG.svg" />
-          <span>AeroChat Voice POC</span>
+          <span>realtime console</span>
         </div>
         <div className="content-api-key">
           {!LOCAL_RELAY_SERVER_URL && (
